@@ -45,18 +45,23 @@ public class BookController{
         bookRepository.deleteById(id);
         return book;
     }
-    @GetMapping({"/name/{name}"})
-    public @ResponseBody Book findByName(@PathVariable String name)
-    {
-        return bookRepository.findByName(name);
-    }
+    // @GetMapping({"/name/{name}"})
+    // public @ResponseBody Book findByName(@PathVariable String name)
+    // {
+    //     return bookRepository.findByName(name);
+    // }
     @GetMapping({"/author/{author}"})
     public @ResponseBody Book findByAuthor(@PathVariable String author)
     {
         return bookRepository.findByAuthor(author);
     }
+    @GetMapping({"/name/{name}"})
+    public @ResponseBody List<Book> findByPlaceIgnoreCaseContaining(@PathVariable String name)
+    {
+        return bookRepository.findByNameIgnoreCaseContaining(name);
+    }
 
-    // @Repository("registerUserRepository")
+    // @Repository("BookRepository")
     // public interface RegisterUserRepository extends JpaRepository<Registration,Long>{
 
     // List<Registration> findByPlaceIgnoreCaseContaining(String place);
